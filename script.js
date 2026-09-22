@@ -1,40 +1,4 @@
 /* =========================================
-   AUDIO DE FONDO
-========================================= */
-
-const bgMusic = document.getElementById("bgMusic");
-
-let audioStarted = false;
-
-function startAudio() {
-
-    if (audioStarted) {
-        return;
-    }
-
-    bgMusic.volume = 0.6;
-
-    bgMusic.play()
-        .then(() => {
-            audioStarted = true;
-        })
-        .catch(() => {
-            // El navegador bloqueó el intento; se reintenta
-            // con el siguiente toque/click del usuario.
-        });
-
-}
-
-// Intento silencioso apenas carga (funciona en algunos navegadores)
-window.addEventListener("load", startAudio);
-
-// Garantizado: arranca con el primer toque/click real,
-// sin importar dónde sea
-document.addEventListener("click", startAudio, { once: true });
-document.addEventListener("touchstart", startAudio, { once: true });
-
-
-/* =========================================
    BOTÓN INICIAL
 ========================================= */
 
@@ -47,8 +11,6 @@ startButton.addEventListener("click", () => {
     });
 
     createBurst();
-
-    startAudio();
 
 });
 
