@@ -1,0 +1,1024 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    background: #070b08;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 193, 7, 0.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #060a09,
+            #0b160f
+        );
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+
+    max-width: 700px;
+    width: 100%;
+
+    padding: 30px 20px;
+
+    animation: fadeUp 1.5s ease;
+}
+
+
+.small-text {
+    font-size: clamp(10px, 2.6vw, 12px);
+
+    letter-spacing: 3px;
+
+    color: #e7b934;
+
+    font-weight: 500;
+}
+
+
+.hero h1 {
+    font-family: "DM Serif Display", serif;
+
+    font-size: clamp(42px, 12vw, 110px);
+
+    line-height: .98;
+
+    margin: 20px 0;
+
+    font-weight: 400;
+
+    word-break: break-word;
+}
+
+
+.hero h1 span {
+    color: #f5c842;
+
+    font-style: italic;
+}
+
+
+.intro-text {
+    max-width: 500px;
+
+    margin: auto;
+
+    color: #bfc5bf;
+
+    font-size: clamp(14px, 3.6vw, 16px);
+
+    line-height: 1.8;
+}
+
+
+button {
+    margin-top: 30px;
+
+    padding: 14px 28px;
+
+    border: 1px solid rgba(255, 215, 80, .5);
+
+    border-radius: 50px;
+
+    background: rgba(255, 193, 7, .08);
+
+    color: #f6d35a;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+button:hover,
+button:active {
+    background: #f3c842;
+
+    color: #111;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 30px rgba(243, 200, 66, .2);
+}
+
+
+.scroll {
+    position: absolute;
+
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+
+    font-size: 22px;
+
+    color: #d8b94d;
+
+    animation: bounce 2s infinite;
+}
+
+
+/* =========================
+   LUNA
+========================= */
+
+.moon {
+    position: absolute;
+
+    width: clamp(70px, 16vw, 130px);
+    height: clamp(70px, 16vw, 130px);
+
+    border-radius: 50%;
+
+    /* base + sombreado tipo cuarto creciente + cráteres */
+    background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), rgba(255,255,255,0) 12%),
+        radial-gradient(circle at 68% 62%, rgba(210, 175, 90, .55) 0%, rgba(210, 175, 90, 0) 12%),
+        radial-gradient(circle at 40% 68%, rgba(200, 165, 85, .5) 0%, rgba(200, 165, 85, 0) 10%),
+        radial-gradient(circle at 62% 30%, rgba(215, 180, 95, .4) 0%, rgba(215, 180, 95, 0) 9%),
+        radial-gradient(circle at 75% 78%, rgba(190, 155, 80, .45) 0%, rgba(190, 155, 80, 0) 8%),
+        radial-gradient(ellipse at 68% 50%, rgba(120, 95, 40, .35), rgba(120, 95, 40, 0) 65%),
+        radial-gradient(circle at 35% 35%, #fffdf0, #ffedad 55%, #f2d585 100%);
+
+    box-shadow:
+        inset -8px -6px 18px rgba(120, 90, 30, .35),
+        inset 6px 6px 14px rgba(255, 255, 255, .5),
+        0 0 45px rgba(255, 230, 140, .45),
+        0 0 110px rgba(255, 220, 80, .18),
+        0 0 180px rgba(255, 220, 80, .08);
+
+    top: calc(30px + env(safe-area-inset-top, 0px));
+    right: 25px;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+.stars::before,
+.stars::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px);
+
+    background-size: 100px 100px;
+
+    opacity: .18;
+
+    z-index: 0;
+}
+
+.stars::after {
+    background-size: 160px 160px;
+
+    opacity: .10;
+
+    transform: translate(30px, 50px);
+}
+
+
+/* =========================
+   JARDÍN
+========================= */
+
+.garden-section {
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b160f,
+            #132719
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 80px 16px 40px;
+}
+
+
+.message {
+
+    position: relative;
+
+    z-index: 20;
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    padding: 0 10px;
+
+    max-width: 90%;
+}
+
+
+.message h2 {
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: clamp(30px, 7.5vw, 70px);
+
+    font-weight: 400;
+
+    margin-top: 15px;
+
+    line-height: 1.15;
+}
+
+
+.message p {
+
+    color: #c4c9c4;
+
+    font-size: clamp(15px, 3.8vw, 18px);
+
+    margin-top: 15px;
+}
+
+
+.message strong {
+
+    color: #f5c842;
+}
+
+
+/* =========================
+   SUELO Y FLORES (escala fluida)
+========================= */
+
+.garden {
+
+    --garden-scale: 1;
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    height: calc(400px * var(--garden-scale));
+
+    position: relative;
+
+    margin: 0 auto;
+}
+
+
+.ground {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: -10%;
+
+    width: 120%;
+
+    height: calc(90px * var(--garden-scale));
+
+    background:
+        radial-gradient(
+            ellipse,
+            #173c20,
+            #0c1c11
+        );
+
+    border-radius: 50% 50% 0 0;
+}
+
+
+.flower {
+
+    position: absolute;
+
+    bottom: calc(35px * var(--garden-scale));
+
+    width: calc(100px * var(--garden-scale));
+
+    height: calc(330px * var(--garden-scale));
+
+    transform-origin: bottom center;
+}
+
+
+.flower-1 {
+    left: 6%;
+}
+
+.flower-2 {
+    left: 24%;
+}
+
+.flower-3 {
+    left: 42%;
+}
+
+.flower-4 {
+    left: 60%;
+}
+
+.flower-5 {
+    left: 78%;
+}
+
+
+.stem {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    width: calc(7px * var(--garden-scale));
+
+    height: calc(270px * var(--garden-scale));
+
+    background:
+        linear-gradient(
+            90deg,
+            #285b30,
+            #4c8d43,
+            #214b28
+        );
+
+    transform: translateX(-50%);
+
+    transform-origin: bottom;
+
+    animation: growStem 2s ease forwards;
+}
+
+
+.leaf {
+
+    position: absolute;
+
+    width: calc(65px * var(--garden-scale));
+
+    height: calc(30px * var(--garden-scale));
+
+    background:
+        linear-gradient(
+            135deg,
+            #43813c,
+            #214d2a
+        );
+
+    border-radius: 100% 0 100% 0;
+
+    bottom: calc(100px * var(--garden-scale));
+
+    opacity: 0;
+
+    animation: showLeaf 1s ease forwards;
+
+}
+
+
+.leaf-left {
+
+    left: 0;
+
+    transform: rotate(-25deg);
+}
+
+
+.leaf-right {
+
+    right: 0;
+
+    transform: scaleX(-1) rotate(-25deg);
+}
+
+
+.flower-head {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    width: calc(110px * var(--garden-scale));
+
+    height: calc(110px * var(--garden-scale));
+
+    transform: translateX(-50%) scale(0);
+
+    animation: bloom 1.4s ease forwards;
+
+}
+
+
+.flower-head span {
+
+    position: absolute;
+
+    width: calc(50px * var(--garden-scale));
+
+    height: calc(72px * var(--garden-scale));
+
+    left: calc(30px * var(--garden-scale));
+
+    top: calc(20px * var(--garden-scale));
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #ffe979,
+            #f2bb18
+        );
+
+    border-radius: 50%;
+
+    transform-origin: 50% calc(35px * var(--garden-scale));
+
+}
+
+
+.flower-head span:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.flower-head span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.flower-head span:nth-child(3) {
+    transform: rotate(90deg);
+}
+
+.flower-head span:nth-child(4) {
+    transform: rotate(135deg);
+}
+
+.flower-head span:nth-child(5) {
+    transform: rotate(180deg);
+}
+
+.flower-head span:nth-child(6) {
+    transform: rotate(225deg);
+}
+
+.flower-head span:nth-child(7) {
+    transform: rotate(270deg);
+}
+
+.flower-head span:nth-child(8) {
+    transform: rotate(315deg);
+}
+
+
+.center {
+
+    position: absolute;
+
+    width: calc(40px * var(--garden-scale));
+    height: calc(40px * var(--garden-scale));
+
+    background:
+        radial-gradient(
+            circle,
+            #6e4214,
+            #3b220c
+        );
+
+    border-radius: 50%;
+
+    left: calc(35px * var(--garden-scale));
+    top: calc(35px * var(--garden-scale));
+
+    z-index: 5;
+
+    box-shadow:
+        0 0 10px rgba(255, 184, 0, .4);
+}
+
+
+/* =========================
+   CARTA
+========================= */
+
+.letter-section {
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #2b2410,
+            #090c09 65%
+        );
+
+    padding: 60px 16px;
+}
+
+
+.envelope {
+
+    width: min(700px, 100%);
+
+    perspective: 1000px;
+}
+
+
+.letter {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf2,
+            #f5eccd
+        );
+
+    color: #28251c;
+
+    padding: clamp(28px, 6vw, 60px);
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.5);
+
+    text-align: center;
+
+    transform: rotateX(90deg);
+
+    opacity: 0;
+
+    transition: 1.5s ease;
+}
+
+
+.letter.show {
+
+    transform: rotateX(0);
+
+    opacity: 1;
+}
+
+
+.heart {
+
+    color: #d6a928;
+
+    font-size: 36px;
+
+    margin-bottom: 18px;
+
+    animation: heartbeat 1.8s infinite;
+}
+
+
+.letter h2 {
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: clamp(28px, 6.5vw, 45px);
+
+    font-weight: 400;
+
+    margin-bottom: 22px;
+
+    line-height: 1.15;
+}
+
+
+.letter p {
+
+    line-height: 1.85;
+
+    color: #625e50;
+
+    margin: 16px auto;
+
+    max-width: 550px;
+
+    font-size: clamp(14.5px, 3.6vw, 16px);
+}
+
+
+.final-message {
+
+    color: #765b17 !important;
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: clamp(18px, 4.6vw, 25px);
+
+    font-style: italic;
+}
+
+
+.signature {
+
+    display: block;
+
+    margin-top: 30px;
+
+    color: #9a7a22;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-section {
+
+    min-height: 80vh;
+    min-height: 80dvh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: #070b08;
+
+    padding: 40px 20px calc(40px + env(safe-area-inset-bottom, 0px));
+}
+
+
+.final-content {
+
+    max-width: 600px;
+
+    padding: 10px;
+}
+
+
+.big-flower {
+
+    font-size: clamp(70px, 16vw, 110px);
+
+    filter:
+        drop-shadow(
+            0 0 25px rgba(255, 205, 60, .25)
+        );
+
+    animation: floatingFlower 3s ease-in-out infinite;
+}
+
+
+.final-content h2 {
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: clamp(42px, 11vw, 70px);
+
+    font-weight: 400;
+
+    color: #f4cf50;
+
+    margin: 18px 0;
+}
+
+
+.final-content p {
+
+    color: #aeb4ae;
+
+    line-height: 1.8;
+
+    font-size: clamp(14px, 3.6vw, 16px);
+}
+
+
+.love {
+
+    color: #f1c83e;
+
+    font-size: 28px;
+
+    margin-top: 25px;
+}
+
+
+/* =========================
+   PARTICULAS
+========================= */
+
+.particle {
+
+    position: fixed;
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #f8d75b;
+
+    pointer-events: none;
+
+    animation: particleFloat 5s linear forwards;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes bounce {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+}
+
+
+@keyframes growStem {
+
+    from {
+        transform: translateX(-50%) scaleY(0);
+    }
+
+    to {
+        transform: translateX(-50%) scaleY(1);
+    }
+
+}
+
+
+@keyframes showLeaf {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes bloom {
+
+    0% {
+        transform: translateX(-50%) scale(0);
+    }
+
+    70% {
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+
+@keyframes floatingFlower {
+
+    0%,100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(3deg);
+    }
+
+}
+
+
+@keyframes particleFloat {
+
+    from {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(-120px)
+            scale(0);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 900px) {
+
+    .garden {
+        --garden-scale: 0.85;
+    }
+
+}
+
+
+/* Móviles grandes */
+@media (max-width: 700px) {
+
+    .garden-section {
+        padding: 60px 14px 30px;
+    }
+
+    .garden {
+        --garden-scale: 0.68;
+    }
+
+    .flower-1 { left: 2%; }
+    .flower-2 { left: 22%; }
+    .flower-3 { left: 42%; }
+    .flower-4 { left: 62%; }
+    .flower-5 { left: 82%; }
+
+}
+
+
+/* Móviles estándar (la mayoría de celulares) */
+@media (max-width: 480px) {
+
+    .moon {
+        top: calc(20px + env(safe-area-inset-top, 0px));
+        right: 18px;
+    }
+
+    .hero-content {
+        padding: 24px 16px;
+    }
+
+    .garden {
+        --garden-scale: 0.56;
+    }
+
+    .message {
+        margin-bottom: 25px;
+    }
+
+    .letter {
+        padding: 30px 20px;
+    }
+
+    .final-section {
+        padding-top: 30px;
+    }
+
+}
+
+
+/* Móviles muy pequeños (iPhone SE y similares) */
+@media (max-width: 360px) {
+
+    .garden {
+        --garden-scale: 0.46;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 13vw, 42px);
+    }
+
+    button {
+        padding: 12px 22px;
+        font-size: 13px;
+    }
+
+}
+
+
+/* Pantallas bajas en horizontal (celular acostado) */
+@media (max-height: 480px) and (orientation: landscape) {
+
+    .hero,
+    .garden-section,
+    .letter-section,
+    .final-section {
+        min-height: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .moon {
+        display: none;
+    }
+
+}
