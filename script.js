@@ -4,11 +4,24 @@
 
 const startButton = document.getElementById("startButton");
 
-startButton.addEventListener("click", () => {
+startButton.addEventListener("click", (event) => {
 
-    document.getElementById("garden").scrollIntoView({
-        behavior: "smooth"
-    });
+    event.preventDefault();
+
+    const target = document.getElementById("garden");
+
+    if (target) {
+
+        const targetTop =
+            target.getBoundingClientRect().top +
+            window.pageYOffset;
+
+        window.scrollTo({
+            top: targetTop,
+            behavior: "smooth"
+        });
+
+    }
 
     createBurst();
 
