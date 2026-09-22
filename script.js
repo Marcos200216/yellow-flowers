@@ -3,10 +3,8 @@
 ========================================= */
 
 const bgMusic = document.getElementById("bgMusic");
-const audioToggle = document.getElementById("audioToggle");
 
 let audioStarted = false;
-let audioMuted = false;
 
 function startAudio() {
 
@@ -21,34 +19,19 @@ function startAudio() {
             audioStarted = true;
         })
         .catch(() => {
-            // El navegador bloqueó el autoplay; se intentará
-            // de nuevo en la primera interacción del usuario.
+            // El navegador bloqueó el intento; se reintenta
+            // con el siguiente toque/click del usuario.
         });
 
 }
 
-// Intento silencioso al cargar (funciona en algunos navegadores)
+// Intento silencioso apenas carga (funciona en algunos navegadores)
 window.addEventListener("load", startAudio);
 
-// Garantizado: arranca en la primera interacción real
+// Garantizado: arranca con el primer toque/click real,
+// sin importar dónde sea
 document.addEventListener("click", startAudio, { once: true });
 document.addEventListener("touchstart", startAudio, { once: true });
-
-audioToggle.addEventListener("click", (e) => {
-
-    e.stopPropagation();
-
-    audioMuted = !audioMuted;
-
-    bgMusic.muted = audioMuted;
-
-    audioToggle.textContent = audioMuted ? "🔇" : "🔊";
-
-    if (!audioStarted) {
-        startAudio();
-    }
-
-});
 
 
 /* =========================================
