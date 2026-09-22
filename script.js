@@ -1,4 +1,57 @@
 /* =========================================
+   AUDIO DE FONDO
+========================================= */
+
+const bgMusic = document.getElementById("bgMusic");
+const audioToggle = document.getElementById("audioToggle");
+
+let audioStarted = false;
+let audioMuted = false;
+
+function startAudio() {
+
+    if (audioStarted) {
+        return;
+    }
+
+    bgMusic.volume = 0.6;
+
+    bgMusic.play()
+        .then(() => {
+            audioStarted = true;
+        })
+        .catch(() => {
+            // El navegador bloqueó el autoplay; se intentará
+            // de nuevo en la primera interacción del usuario.
+        });
+
+}
+
+// Intento silencioso al cargar (funciona en algunos navegadores)
+window.addEventListener("load", startAudio);
+
+// Garantizado: arranca en la primera interacción real
+document.addEventListener("click", startAudio, { once: true });
+document.addEventListener("touchstart", startAudio, { once: true });
+
+audioToggle.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
+    audioMuted = !audioMuted;
+
+    bgMusic.muted = audioMuted;
+
+    audioToggle.textContent = audioMuted ? "🔇" : "🔊";
+
+    if (!audioStarted) {
+        startAudio();
+    }
+
+});
+
+
+/* =========================================
    BOTÓN INICIAL
 ========================================= */
 
@@ -11,6 +64,8 @@ startButton.addEventListener("click", () => {
     });
 
     createBurst();
+
+    startAudio();
 
 });
 

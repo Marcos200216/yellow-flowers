@@ -21,6 +21,58 @@ body {
 
 
 /* =========================
+   BOTÓN DE AUDIO
+========================= */
+
+#audioToggle {
+
+    position: fixed;
+
+    top: calc(18px + env(safe-area-inset-top, 0px));
+
+    left: 18px;
+
+    z-index: 999;
+
+    width: 42px;
+    height: 42px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 215, 80, .4);
+
+    border-radius: 50%;
+
+    background: rgba(7, 11, 8, .55);
+
+    backdrop-filter: blur(6px);
+
+    color: #f6d35a;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+#audioToggle:hover,
+#audioToggle:active {
+
+    background: rgba(243, 200, 66, .18);
+
+    transform: translateY(0) scale(1.06);
+
+    box-shadow: 0 6px 20px rgba(243, 200, 66, .2);
+}
+
+
+/* =========================
    HERO
 ========================= */
 
